@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000, #0f0, #000);
+  animation: animate 5s linear infinite;
+  z-index: 1; /* Ensure the background effect is behind the spans */
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+section span {
+  position: absolute; /* Use absolute positioning */
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2; /* Ensure the spans are above the background effect */
+  transition: 1.5s;
+}
+
+section span:hover {
+  background: #0f0;
+  transition: 0s;
+}
+
+/* Styles สำหรับหน้าร้านค้า */
+.shopping {
+    position: relative; /* Ensure it is positioned correctly */
+    width: 80%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    border-radius: 4px; /* Makes the corners fully rounded */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    overflow-y: auto; /* Allow vertical scrolling */
+    border: 11px solid transparent;
+    border-image: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta);
+    border-image-slice: 1;
+    animation: rgbBorder 1.5s linear infinite, glow 1.5s linear infinite;
+    z-index: 1000; /* Ensure it is on top of everything else */
+  }
+/* Animation for RGB border effect */
+@keyframes rgbBorder {
+  0% {
+    border-image-source: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta);
+  }
+  100% {
+    border-image-source: linear-gradient(135deg, red, yellow, green, cyan, blue, magenta);
+  }
+}
+
+/* Animation for glowing effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.7), 0 0 60px rgba(0, 0, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+  }
+}
+
+.shopping .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shopping .content h2 {
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust columns based on screen size */
+  gap: 20px;
+}
+
+.product {
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and shadow */
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.product:hover {
+  transform: scale(1.05); /* Increase size by 5% on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); /* Add shadow effect */
+}
+
+/* New styles for the link-product */
+.link-product a {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Inherit text color from the parent */
+}
+
+.link-product a:hover h3, 
+.link-product a:hover p {
+  color: #0f0; /* Change text color to green */
+}
